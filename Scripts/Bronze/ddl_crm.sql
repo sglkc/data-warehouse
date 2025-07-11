@@ -17,14 +17,14 @@ CREATE TABLE bronze.crm_prd_info (
   prd_id int
   , prd_key varchar
   , prd_nm varchar
-  , prd_cost varchar
+  , prd_cost int
   , prd_line varchar
   , prd_start_dt date
   , prd_end_dt date
 );
 
-DROP TABLE IF EXISTS bronze.crm_prd_info;
-CREATE TABLE bronze.crm_prd_info (
+DROP TABLE IF EXISTS bronze.crm_sales_details;
+CREATE TABLE bronze.crm_sales_details (
   sls_ord_num varchar
   , sls_prd_key varchar
   , sls_cust_id int
