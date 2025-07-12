@@ -1,6 +1,8 @@
 -- Create tables from CRM source
 -- Every column is a 1:1 replica from the source
 
+-- CRM Source
+
 DROP TABLE IF EXISTS bronze.crm_cust_info;
 CREATE TABLE bronze.crm_cust_info (
   cst_id int
@@ -34,4 +36,27 @@ CREATE TABLE bronze.crm_sales_details (
   , sls_sales int
   , sls_quantity int
   , sls_price int
+);
+
+-- ERP Source
+
+DROP TABLE IF EXISTS bronze.erp_cust_az12;
+CREATE TABLE bronze.erp_cust_az12 (
+  cid varchar
+  , bdate date
+  , gen varchar
+);
+
+DROP TABLE IF EXISTS bronze.erp_loc_a101;
+CREATE TABLE bronze.erp_loc_a101 (
+  cid varchar
+  , cntry varchar
+);
+
+DROP TABLE IF EXISTS bronze.erp_px_cat_g1v2;
+CREATE TABLE bronze.erp_px_cat_g1v2 (
+  id varchar
+  , cat varchar
+  , subcat varchar
+  , maintenance varchar
 );
