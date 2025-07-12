@@ -1,4 +1,4 @@
-CREATE VIEW gold.dim_customers AS (
+CREATE OR REPLACE VIEW gold.dim_customers AS (
   SELECT
     ROW_NUMBER() OVER (ORDER BY cci.cst_id) customer_key,
     cci.cst_id customer_id,
