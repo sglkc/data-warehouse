@@ -10,7 +10,7 @@ AS $$
     start_load_time TIMESTAMP;
   BEGIN
     start_load_time = NOW();
-    RAISE NOTICE 'Loading source data to bronze layer...';
+    RAISE NOTICE E'Loading source data to bronze layer...\n';
 
     start_time = NOW();
     RAISE NOTICE 'Importing bronze.crm_cust_info';
@@ -22,7 +22,7 @@ AS $$
       , HEADER TRUE
       , NULL ''
     );
-    RAISE NOTICE 'Imported bronze.crm_cust_info in % ms', EXTRACT(EPOCH FROM (NOW() - start_time));
+    RAISE NOTICE E'Imported bronze.crm_cust_info in % ms\n', EXTRACT(EPOCH FROM (NOW() - start_time));
     
     start_time = NOW();
     RAISE NOTICE 'Importing bronze.crm_prd_info';
@@ -34,7 +34,7 @@ AS $$
       , HEADER TRUE
       , NULL ''
     );
-    RAISE NOTICE 'Imported bronze.crm_prd_info in % ms', EXTRACT(EPOCH FROM (NOW() - start_time));
+    RAISE NOTICE E'Imported bronze.crm_prd_info in % ms\n', EXTRACT(EPOCH FROM (NOW() - start_time));
     
     start_time = NOW();
     RAISE NOTICE 'Importing bronze.crm_sales_details';
@@ -46,7 +46,7 @@ AS $$
       , HEADER TRUE
       , NULL ''
     );
-    RAISE NOTICE 'Imported bronze.crm_sales_details in % ms', EXTRACT(EPOCH FROM (NOW() - start_time));
+    RAISE NOTICE E'Imported bronze.crm_sales_details in % ms\n', EXTRACT(EPOCH FROM (NOW() - start_time));
 
     start_time = NOW();
     RAISE NOTICE 'Importing bronze.erp_cust_az12';
@@ -58,7 +58,7 @@ AS $$
       , HEADER TRUE
       , NULL ''
     );
-    RAISE NOTICE 'Imported bronze.erp_cust_az12 in % ms', EXTRACT(EPOCH FROM (NOW() - start_time));
+    RAISE NOTICE E'Imported bronze.erp_cust_az12 in % ms\n', EXTRACT(EPOCH FROM (NOW() - start_time));
     
     start_time = NOW();
     RAISE NOTICE 'Importing bronze.erp_loc_a101';
@@ -70,7 +70,7 @@ AS $$
       , HEADER TRUE
       , NULL ''
     );
-    RAISE NOTICE 'Imported bronze.erp_loc_a101 in % ms', EXTRACT(EPOCH FROM (NOW() - start_time));
+    RAISE NOTICE E'Imported bronze.erp_loc_a101 in % ms\n', EXTRACT(EPOCH FROM (NOW() - start_time));
     
     start_time = NOW();
     RAISE NOTICE 'Importing bronze.erp_px_cat_g1v2';
@@ -82,7 +82,7 @@ AS $$
       , HEADER TRUE
       , NULL ''
     );
-    RAISE NOTICE 'Imported bronze.erp_px_cat_g1v2 in % ms', EXTRACT(EPOCH FROM (NOW() - start_time));
+    RAISE NOTICE E'Imported bronze.erp_px_cat_g1v2 in % ms\n', EXTRACT(EPOCH FROM (NOW() - start_time));
 
     RAISE NOTICE 'Loaded in % ms', EXTRACT(EPOCH FROM (NOW() - start_load_time));
   END
