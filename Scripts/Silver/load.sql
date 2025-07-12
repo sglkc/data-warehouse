@@ -125,6 +125,23 @@ AS $$
     FROM bronze.erp_loc_a101;
     RAISE NOTICE E'Processed silver.erp_loc_a101 in % ms\n', EXTRACT(EPOCH FROM (NOW() - start_time)) * 1000;
 
+    start_time = NOW();
+    RAISE NOTICE 'Processing silver.erp_px_cat_g1v2';
+    TRUNCATE silver.erp_px_cat_g1v2 RESTART IDENTITY;
+    INSERT INTO silver.erp_px_cat_g1v2 (
+      id,
+      cat,
+      subcat,
+      maintenance
+    )
+    SELECT
+      trim(id) id,
+      trim(cat) cat,
+      trim(subcat) subcat,
+      trim(maintenance) maintenance
+    FROM bronze.erp_px_cat_g1v2;
+    RAISE NOTICE E'Processed silver.erp_px_cat_g1v2 in % ms\n', EXTRACT(EPOCH FROM (NOW() - start_time)) * 1000;
+
     RAISE NOTICE 'Silver layer loaded in % ms', EXTRACT(EPOCH FROM (NOW() - start_load_time)) * 1000;
   END
 $$;
