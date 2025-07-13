@@ -1,1 +1,28 @@
 .dbeaver
+
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# DLT
+
+# ignore secrets, virtual environments and typical python compilation artifacts
+secrets.toml
+# ignore basic python artifacts
+.env
+**/__pycache__/
+**/*.py[cod]
+**/*$py.class
+# ignore duckdb
+*.duckdb
+*.wal
+sqlmesh_project/.cache
+
+logs
