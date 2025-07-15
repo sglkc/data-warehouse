@@ -158,17 +158,16 @@ def main():
         pipeline_name="csv_to_postgres_pipeline",
         destination="postgres",
         dataset_name="bronze",
-        refresh="drop_sources"
+        refresh="drop_sources",
+        progress="log"
     )
 
     # Load data using the source
     print("Loading all CSV files...")
-    load_info = pipeline.run(csv_data_pipeline())
+    pipeline.run(csv_data_pipeline())
 
     # Print load results
     print(f"Pipeline completed successfully!")
-    print(f"Load ID: {load_info.loads_ids[0] if load_info.loads_ids else 'N/A'}")
-    print(f"Tables loaded: {len(load_info.load_packages[0].jobs) if load_info.load_packages else 0}")
 
 if __name__ == "__main__":
     main()
